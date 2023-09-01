@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "storage": {
+      "stripedb": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "secretNames": [
+    "endpoint_secret"
+  ],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "endpointSecretKey",
+      "environmentVariableName": "endpoint_secret_key"
+    },
+    {
+      "cloudFormationParameterName": "apiKey",
+      "environmentVariableName": "api_key"
+    }
+  ]
+}

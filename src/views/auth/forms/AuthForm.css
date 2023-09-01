@@ -1,0 +1,66 @@
+.auth-form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px #111928 inset !important;
+  -webkit-text-fill-color: default !important;
+}
+
+.auth-form .MuiInputBase-adornedEnd input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.auth-form .names-input {
+  display: flex;
+  justify-content: space-around;
+}
+
+.auth-input {
+  font-size: 14px !important;
+  outline: none !important;
+  background-color: #111928 !important;
+  font-family: "Inter" !important;
+  font-size: 14px !important;
+}
+
+.auth-input.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #4b5563 !important;
+  border-width: 2px !important;
+}
+
+.forgot-password {
+  font-family: "Inter" !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  display: block !important;
+  text-align: right !important;
+  color: #9ca3af !important;
+  margin: 15px 0px !important;
+}
+
+.login-button {
+  font-size: 16px !important;
+  background: #d22418 !important;
+  border-radius: 10px !important ;
+}
+
+.login-button:hover {
+  background-color: #d22418 !important;
+  color: white !important;
+}
+
+.agreement {
+  font-family: "Inter" !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-align: center !important;
+  color: #9ca3af !important;
+  width: 100% !important;
+  display: block !important;
+  margin-top: 15px !important;
+}
+
+.agreement .terms-link {
+  color: #f30000;
+  text-decoration: underline;
+}

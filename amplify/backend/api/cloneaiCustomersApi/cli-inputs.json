@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "paths": {
+    "/customers": {
+      "name": "Customers",
+      "method": "GET",
+      "path": "/customers",
+      "lambdaFunction": "cloneaiCustomers",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/customers/add-broker-account": {
+      "name": "AddBrokerAccount",
+      "method": "PUT",
+      "path": "/customers/add-broker-account",
+      "lambdaFunction": "cloneaiCustomers",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/stripe-webhook": {
+      "name": "StripeWebhook",
+      "method": "POST",
+      "path": "/stripe-webhook",
+      "lambdaFunction": "cloneaiCustomers",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/plans": {
+      "name": "StripePlans",
+      "method": "GET",
+      "path": "/plans",
+      "lambdaFunction": "cloneaiCustomers",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/create-subscription": {
+      "name": "StripeCreateSubscription",
+      "method": "POST",
+      "path": "/create-subscription",
+      "lambdaFunction": "cloneaiCustomers",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/cancel-subscription": {
+      "name": "StripeCancelSubscription",
+      "method": "POST",
+      "path": "/cancel-subscription",
+      "lambdaFunction": "cloneaiCustomers",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/contact-us": {
+      "name": "ContactUsForm",
+      "method": "POST",
+      "path": "/contact-us",
+      "lambdaFunction": "cloneaiCustomers",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "api": {
+    "customers": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "customershandler"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "stripeapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "stripeActions"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CloneaiFlask"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "cloneaiCustomersApi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cloneaiCustomers",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
+  },
+  "auth": {
+    "cloneai": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "FAMILY_NAME",
+          "EMAIL",
+          "NAME"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "CloneaiFlask": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "stripedb"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "CUSTOMERS"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "customershandler": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "stripeActions": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "cloneaiCustomers": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_CloneaiFlask_apiKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CloneaiFlask"
+        }
+      ]
+    },
+    "AMPLIFY_function_CloneaiFlask_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CloneaiFlask"
+        }
+      ]
+    },
+    "AMPLIFY_function_CloneaiFlask_endpointSecretKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CloneaiFlask"
+        }
+      ]
+    },
+    "AMPLIFY_function_CloneaiFlask_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CloneaiFlask"
+        }
+      ]
+    },
+    "AMPLIFY_function_CloneaiFlask_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CloneaiFlask"
+        }
+      ]
+    },
+    "AMPLIFY_function_customershandler_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "customershandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_customershandler_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "customershandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripeActions_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripeActions"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripeActions_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripeActions"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripePython_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripePython"
+        }
+      ]
+    },
+    "AMPLIFY_function_stripePython_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "stripePython"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "CUSTOMERS": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "stripedb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "cloneaimedia": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  }
+}

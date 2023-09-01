@@ -1,0 +1,10 @@
+{ "path": "/customers/all", "httpMethod":"GET",
+"queryStringParameters":{
+    "email": "sherief.emam85.se@gmail.com",
+    "iBAccount":"asdasd",
+    "firstname":"TEST",
+    "lastname": "SEM",
+    "AWSsub":"397f0f26-b1a1-4b32-a060-abfa9ad47675",
+    "iBStatus": "active"
+}
+}

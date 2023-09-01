@@ -1,0 +1,1 @@
+export const S3_BUCKET_BASE_URL = 'https://cloneai-media-bucket184448-dev.s3.us-east-2.amazonaws.com/public';

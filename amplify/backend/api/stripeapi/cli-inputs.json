@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "paths": {
+    "/webhook": {
+      "name": "/webhook",
+      "lambdaFunction": "stripeActions",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/webhook/server": {
+      "name": "/webhook/server",
+      "lambdaFunction": "CloneaiFlask",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/customers": {
+      "name": "/customers",
+      "lambdaFunction": "CloneaiFlask",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}

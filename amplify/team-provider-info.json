@@ -1,0 +1,56 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cloneai-dev-184448-authRole",
+      "UnauthRoleArn": "arn:aws:iam::105916779720:role/amplify-cloneai-dev-184448-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::105916779720:role/amplify-cloneai-dev-184448-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-cloneai-dev-184448-deployment",
+      "UnauthRoleName": "amplify-cloneai-dev-184448-unauthRole",
+      "StackName": "amplify-cloneai-dev-184448",
+      "StackId": "arn:aws:cloudformation:us-east-2:105916779720:stack/amplify-cloneai-dev-184448/d05c3580-92a0-11ed-b260-06c1f12f5eae",
+      "AmplifyAppId": "dkguyb0qal559",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-cloneai-dev-184448-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "cloneai": {}
+      },
+      "function": {
+        "stripeActions": {
+          "deploymentBucketName": "amplify-cloneai-dev-184448-deployment",
+          "s3Key": "amplify-builds/stripeActions-434a6656386d2b494e57-build.zip"
+        },
+        "stripePython": {
+          "deploymentBucketName": "amplify-cloneai-dev-184448-deployment",
+          "s3Key": "amplify-builds/stripePython-726d4d7a434b37583530-build.zip"
+        },
+        "CloneaiFlask": {
+          "deploymentBucketName": "amplify-cloneai-dev-184448-deployment",
+          "s3Key": "amplify-builds/CloneaiFlask-734548766e316a713849-build.zip",
+          "secretsPathAmplifyAppId": "dkguyb0qal559",
+          "endpointSecretKey": "whsec_bJ2z0fYaBDaMv4YplYdJfRHstSAM0hfN",
+          "apiKey": "sk_test_51KqzpnJ71VHv16QMlMj6dEhUyfl1MnZZ7AfmAiWUup66EVaDHG9m7w5Z3FLrK7A1dTmQxB5onZZlepBvbppjsGUj00nP0Vkln9"
+        },
+        "customershandler": {
+          "deploymentBucketName": "amplify-cloneai-dev-184448-deployment",
+          "s3Key": "amplify-builds/customershandler-587544444d4e36496c53-build.zip"
+        },
+        "cloneaiCustomers": {
+          "deploymentBucketName": "amplify-cloneai-dev-184448-deployment",
+          "s3Key": "amplify-builds/cloneaiCustomers-764a316c4e4b4f736d50-build.zip"
+        }
+      },
+      "storage": {
+        "stripedb": {},
+        "CUSTOMERS": {},
+        "cloneaimedia": {}
+      },
+      "api": {
+        "stripeapi": {},
+        "customers": {},
+        "cloneaiCustomersApi": {}
+      }
+    }
+  }
+}

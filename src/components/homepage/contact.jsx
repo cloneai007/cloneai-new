@@ -14,8 +14,6 @@ import { Formik, Form } from "formik";
 import EmailIcon from "@mui/icons-material/Email";
 import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-hot-toast";
-
-
 export default function Contact() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -34,6 +32,8 @@ export default function Contact() {
       theme: "dark",
       style: {
         width: "400px",
+        fontSize: "18px",
+        textAlign: "center",
       },
     });
 
@@ -224,7 +224,7 @@ export default function Contact() {
                       <Grid item xs={12} sm={6}>
                         <TextField
                           error={errors.firstName && touched.firstName}
-                          autoComplete="fname"
+                          autoComplete="off"
                           name="firstName"
                           variant="filled"
                           fullWidth
@@ -247,7 +247,7 @@ export default function Contact() {
                           id="lastName"
                           label="Last Name"
                           name="lastName"
-                          autoComplete="lname"
+                          autoComplete="off"
                           helperText={
                             errors.lastName && touched.lastName
                               ? errors.lastName
@@ -264,7 +264,7 @@ export default function Contact() {
                           id="email"
                           label="Email Address"
                           name="email"
-                          autoComplete="email"
+                          autoComplete="off"
                           helperText={
                             errors.email && touched.email ? errors.email : null
                           }
@@ -281,7 +281,7 @@ export default function Contact() {
                           mb="20px"
                           onChange={handleChange}
                           name="message"
-                          label="message"
+                          label="Message"
                           type="message"
                         />
                       </Grid>

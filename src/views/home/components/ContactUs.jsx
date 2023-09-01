@@ -74,7 +74,13 @@ const ContactUs = () => {
       const response = await sendContactUsEmail(body);
       console.log(response);
       toast.success(
-        response.message || "Your message has been sent successfully!"
+        response.message || "Your message has been sent successfully!",
+        {
+          style: {
+            fontSize: "18px", // You can adjust the font size as needed
+            textAlign: "center",
+          },
+        }
       );
     } catch (e) {
       toast.error(e?.message || "Please fill in the form!");

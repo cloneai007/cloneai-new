@@ -4,7 +4,7 @@ import { Auth } from "aws-amplify";
 
 import { Box, Button, OutlinedInput } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Height, Visibility, VisibilityOff } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 
 import Card from "@mui/material/Card";
@@ -20,7 +20,7 @@ import "../auth/Auth.css";
 const ForgotPassword = React.memo(() => {
   const [showPassword, setShowPassword] = useState(false);
   const [verificationLoading, setCodeVerificationLoading] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [cooldown, setCooldown] = useState(20);
   const cooldownRef = useRef();
   const [step, setStep] = useState(1);
@@ -31,7 +31,7 @@ const ForgotPassword = React.memo(() => {
     cooldownRef.current = setInterval(() => {
       setCooldown((t) => t - 1);
     }, 1000);
-  }
+  };
 
   useEffect(() => {
     if (cooldown <= 0) {
@@ -52,7 +52,7 @@ const ForgotPassword = React.memo(() => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!emailRegex.test(email)) {
-        throw new Error('Please enter a valid email address.');
+        throw new Error("Please enter a valid email address.");
       }
 
       setCooldown(20);
@@ -61,12 +61,11 @@ const ForgotPassword = React.memo(() => {
       console.log(data);
       return data;
     } catch (e) {
-      console.log('sendVerificationEmail error', e);
       throw e;
     } finally {
       setCodeVerificationLoading(false);
     }
-  }
+  };
 
   const onSubmit = async (e) => {
     try {
@@ -76,8 +75,7 @@ const ForgotPassword = React.memo(() => {
       console.log(data);
       setStep(2);
     } catch (e) {
-      toast.error(e.message || 'Something went wrong!');
-      console.log('onSubmit error', e);
+      toast.error(e.message || "Something went wrong!");
     } finally {
       setLoading(false);
     }
@@ -89,26 +87,31 @@ const ForgotPassword = React.memo(() => {
       setLoading(true);
       const { email, password, code } = e.target;
 
-      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+\[\]{}|;:'",.<>?/])[A-Za-z\d!@#$%^&*()-_=+\[\]{}|;:'",.<>?/]{8,}$/;
+      const passwordRegex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+\[\]{}|;:'",.<>?/])[A-Za-z\d!@#$%^&*()-_=+\[\]{}|;:'",.<>?/]{8,}$/;
       if (!passwordRegex.test(password.value)) {
         throw new Error(
-          'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*()-_=+[]{}|;:\'",.<>?/).'
+          "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*()-_=+[]{}|;:'\",.<>?/)."
         );
       }
 
-      const data = await Auth.forgotPasswordSubmit(email.value, code.value, password.value);
+      const data = await Auth.forgotPasswordSubmit(
+        email.value,
+        code.value,
+        password.value
+      );
       console.log(data);
       toast.success("Password Changed Successfully!");
-      navigate('/login')
+      navigate("/login");
     } catch (e) {
-      console.log('forgotPasswordSubmit error', e);
-      toast.error(e.message || 'Something went wrong!');
+      console.log("forgotPasswordSubmit error", e);
+      toast.error(e.message || "Something went wrong!");
     } finally {
       setLoading(false);
     }
   };
 
-  console.log('cooldown > 0', cooldown > 0);
+  console.log("cooldown > 0", cooldown > 0);
 
   return (
     <Box
@@ -139,6 +142,9 @@ const ForgotPassword = React.memo(() => {
               component="img"
               image="/logo_banner.png"
               alt="logo_banner"
+              sx={{
+                width: "250px",
+              }}
             />
 
             <form
@@ -164,51 +170,52 @@ const ForgotPassword = React.memo(() => {
                   sx={{ marginBottom: step === 1 ? 2 : 1, borderRadius: 3 }}
                 />
 
-                {step === 2 ? <Slide top duration={300}>
-                  <OutlinedInput
-                    className="auth-input"
-                    id="code"
-                    name="code"
-                    fullWidth
-                    placeholder="Verification Code"
-                    sx={{ marginBottom: 1, borderRadius: 3 }}
-                  />
+                {step === 2 ? (
+                  <Slide top duration={300}>
+                    <OutlinedInput
+                      className="auth-input"
+                      id="code"
+                      name="code"
+                      fullWidth
+                      placeholder="Verification Code"
+                      sx={{ marginBottom: 1, borderRadius: 3 }}
+                    />
 
-                  <OutlinedInput
-                    className="auth-input"
-                    fullWidth
-                    id="password"
-                    name="password"
-                    placeholder="Password"
-                    type={showPassword ? "text" : "password"}
-                    sx={{ marginBottom: 3, borderRadius: 3 }}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                  <Button
-                    className="login-button"
-                    fullWidth
-                    variant="contained"
-                    sx={{ marginBottom: 2 }}
-                    onClick={sendVerificationEmail}
-                    disabled={cooldown > 0}
-                  >
-                    {verificationLoading
-                      ? "Loading..."
-                      : `Resend ${cooldown > 0 ? `(${cooldown})` : ""
-                      }`}
-                  </Button>
-                </Slide> : null}
+                    <OutlinedInput
+                      className="auth-input"
+                      fullWidth
+                      id="password"
+                      name="password"
+                      placeholder="Password"
+                      type={showPassword ? "text" : "password"}
+                      sx={{ marginBottom: 3, borderRadius: 3 }}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                    <Button
+                      className="login-button"
+                      fullWidth
+                      variant="contained"
+                      sx={{ marginBottom: 2 }}
+                      onClick={sendVerificationEmail}
+                      disabled={cooldown > 0}
+                    >
+                      {verificationLoading
+                        ? "Loading..."
+                        : `Resend ${cooldown > 0 ? `(${cooldown})` : ""}`}
+                    </Button>
+                  </Slide>
+                ) : null}
                 <Button
                   className="login-button"
                   fullWidth
@@ -220,8 +227,8 @@ const ForgotPassword = React.memo(() => {
                   {loading
                     ? "Loading..."
                     : step === 2
-                      ? "Change Password"
-                      : "Send Verification Code"}
+                    ? "Change Password"
+                    : "Send Verification Code"}
                 </Button>
               </Box>
             </form>

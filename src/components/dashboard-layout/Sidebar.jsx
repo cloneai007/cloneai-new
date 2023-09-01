@@ -41,6 +41,7 @@ const ListItem = ({ title, icon, active, onClick }) => (
 const Sidebar = ({ tabs, sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const [activeTab, setActiveTab] = useState();
 
@@ -80,11 +81,11 @@ const Sidebar = ({ tabs, sidebarOpen, setSidebarOpen }) => {
           width: "123.44px",
           marginTop: "10px",
           marginBottom: "40px",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
         image={Logo}
         alt="Logo"
-        onClick={() => navigate('/')}
+        onClick={() => navigate("/dashboard")}
       />
 
       {tabs &&
@@ -95,7 +96,9 @@ const Sidebar = ({ tabs, sidebarOpen, setSidebarOpen }) => {
               active={activeTab === item.path}
               title={item.name}
               icon={item.icon}
-              onClick={() => item?.onClick ? item?.onClick() : onPressTab(item.path)}
+              onClick={() =>
+                item?.onClick ? item?.onClick() : onPressTab(item.path)
+              }
             />
           );
         })}

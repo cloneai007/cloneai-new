@@ -18,26 +18,12 @@ const SubscriptionCard = ({ icon, item }) => {
         borderRadius: "10px",
         padding: "30px",
         marginBottom: { xs: "20px", md: 0 },
+        transition: "transform 250ms linear",
+        "&:hover": {
+          transform: "scale(1.1)",
+        },
       }}
     >
-      <Box
-        sx={{
-          borderRadius: "8px",
-          padding: "8px 10px 8px 10px",
-          maxWidth: "114px",
-          backgroundColor: "rgba(243, 0, 0, 0.3)",
-          marginBottom: "18px",
-        }}
-      >
-        <Typography
-          textTransform="uppercase"
-          color="#F30000"
-          fontSize="16px"
-          fontWeight="600"
-        >
-          {item.livemode ? 'Live Mode' : 'Test Mode'}
-        </Typography>
-      </Box>
       <CardMedia
         component="img"
         sx={{
@@ -103,11 +89,19 @@ const SubscriptionCard = ({ icon, item }) => {
 
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Button
-          className="login-button"
           disabled={isSubscriptionActive}
           variant="contained"
           onClick={() => navigate(`/checkout?priceId=${item.id}`, { state: { item } })}
-          sx={{ width: "100%" }}
+          sx={{
+            width: "100%",
+            fontSize: "16px",
+            background: "#d22418",
+            borderRadius: "10px",
+            "&:hover": {
+              background: "white",
+              color: "#888",
+            },
+          }}
         >
           Start trial
         </Button>

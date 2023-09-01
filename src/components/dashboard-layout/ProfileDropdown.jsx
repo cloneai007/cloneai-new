@@ -103,7 +103,6 @@ const ProfileDropdown = () => {
             }}
           />
         </Box>
-        <KeyboardArrowDownIcon fontSize="large" />
       </Box>
       <Menu
         anchorEl={anchorEl}

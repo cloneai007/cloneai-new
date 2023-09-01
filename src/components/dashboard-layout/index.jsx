@@ -1,15 +1,12 @@
 import { Box } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import { Person, Logout } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import Sidebar from "./Sidebar";
 import ProfileDropdown from "./ProfileDropdown";
 import { useState } from "react";
 import styled from "styled-components";
-import { Auth } from "aws-amplify";
-import { useNavigate } from "react-router-dom";
 
 const MenuIconContainer = styled(Box)({
   position: "absolute",
@@ -41,7 +38,6 @@ const SidebarOverlay = styled(Box)({
 
 const DashboardLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigate = useNavigate();
 
   const Tabs = [
     { name: "Dashboard", path: "/dashboard", icon: <HomeIcon /> },
@@ -49,20 +45,6 @@ const DashboardLayout = ({ children }) => {
       name: "Subscription",
       path: "/subscription",
       icon: <MonetizationOnIcon />,
-    },
-    {
-      name: "Profile",
-      path: "/profile",
-      icon: <Person />,
-    },
-    {
-      name: "Logout",
-      path: "/",
-      icon: <Logout />,
-      onClick: async () => {
-        Auth.signOut();
-        navigate('/')
-      }
     },
   ];
 

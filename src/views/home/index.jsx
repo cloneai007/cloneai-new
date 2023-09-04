@@ -8,7 +8,6 @@ import ChartSection from "./components/ChartSection";
 import SupportSection from "./components/SupportSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import OfferSection from "./components/OfferSection";
-import PricingSection from "./components/PricingSection";
 import ContactUs from "./components/ContactUs";
 import Calendly from "../../components/calendly";
 
@@ -42,9 +41,6 @@ const Homepage = () => {
       </Box>
 
       <OfferSection />
-      <div id="pricing">
-        <PricingSection />
-      </div>
       <div id="contact">
         <ContactUs />
       </div>

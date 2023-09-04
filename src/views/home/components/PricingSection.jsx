@@ -3,14 +3,10 @@ import Fade from "react-reveal/Fade";
 
 import PricingCard from "./PricingCard";
 
-import Icon1 from "../../../images/pricing/union-brown.png";
-import Icon2 from "../../../images/pricing/union-white.png";
-import Icon3 from "../../../images/pricing/union-yellow.png";
-
 const PricingSection = () => {
   return (
-    <Box sx={{ px: { xs: "20px", sm: "50px", md: "100px", lg: "206px" } }}>
-      <Grid container columnSpacing={3} sx={{ paddingY: "120px" }}>
+    <Box >
+      <Grid container columnSpacing={3} justifyContent="center" sx={{ paddingY: "120px" }}>
         <Grid item xs={12}>
           <Fade bottom>
             <Typography
@@ -19,7 +15,6 @@ const PricingSection = () => {
               fontWeight="700"
               color="#FFFFFF"
               marginBottom="21px"
-              textAlign="center"
             >
               Pricing
             </Typography>
@@ -32,21 +27,20 @@ const PricingSection = () => {
               fontWeight="500"
               color="#D1D5DB"
               marginBottom="63px"
-              textAlign="center"
             >
               Flat rate monthly subscription
             </Typography>
           </Fade>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={4}>
-          <PricingCard icon={Icon1} name="Starter" price="$489" />
+        <Grid item xs={12} sm={6} md={3.8}>
+          <PricingCard description="Start trading now with budget limit between 30 and 60k." name="Starter" price="$489" />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <PricingCard icon={Icon2} name="Professional" price="$979" />
+        <Grid item xs={12} sm={6} md={3.8}>
+          <PricingCard description="Start trading now with budget limit between 30 and 60k." name="Professional" price="$979" />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <PricingCard icon={Icon3} name="Master" price="$1469" />
+        <Grid item xs={12} sm={6} md={3.8}>
+          <PricingCard description="Start trading now with budget limit between 30 and 60k." name="Master" price="$1469" />
         </Grid>
       </Grid>
     </Box>

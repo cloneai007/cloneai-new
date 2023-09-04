@@ -238,6 +238,7 @@ const UserProfile = ({ user, isEditing, loading, onPressEdit, onPressCancel }) =
               name="name"
               variant="outlined"
               defaultValue={user.name}
+              autoComplete="off"
             />
           ) : (
             <InfoText>{user.name}</InfoText>

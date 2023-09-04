@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CheckIcon from "../../../../images/pricing/check-icon.png";
 import { useStore } from "../../../../context/AppProvider";
 
-const SubscriptionCard = ({ icon, item }) => {
+const SubscriptionCard = ({ item }) => {
   const navigate = useNavigate();
   const { user } = useStore();
 
@@ -24,18 +24,6 @@ const SubscriptionCard = ({ icon, item }) => {
         },
       }}
     >
-      <CardMedia
-        component="img"
-        sx={{
-          objectFit: "contain",
-          width: "40px",
-          height: "40px",
-          marginBottom: "18px",
-        }}
-        image={icon}
-        alt="Category Image"
-      />
-
       <Typography
         variant="h6"
         fontSize="24px"
@@ -45,29 +33,70 @@ const SubscriptionCard = ({ icon, item }) => {
       >
         {item?.product?.name}
       </Typography>
-      <Typography variant="p" fontSize="14px" fontWeight="500" color="#D1D5DB">
-        {item.description}
-      </Typography>
 
       <Typography
-        variant="h4"
-        fontSize="40px"
-        lineHeight="40px"
-        fontWeight="700"
+        variant="h1"
+        fontSize="16px"
+        fontWeight="500"
         color="#FFFFFF"
-        marginTop="20px"
+        marginBottom="30px"
       >
-        ${(item.unit_amount / 100).toFixed(2)}
+        {item?.product?.description}
       </Typography>
+      <Box sx={{ display: "flex", marginBottom: "20px" }}>
+        <Typography
+          variant="h4"
+          fontSize="40px"
+          lineHeight="40px"
+          fontWeight="700"
+          color="#FFFFFF"
+          marginRight="5px"
+        >
+          ${(item.unit_amount / 100).toFixed(2)}
+        </Typography>
 
-      <Typography fontSize="14px" fontWeight="500" color="#9CA3AF">
-        /month
-      </Typography>
-
-      <Divider sx={{ marginY: "20px" }} />
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Typography
+            variant="p"
+            fontSize="14px"
+            fontWeight="500"
+            color="#9CA3AF"
+          >
+            per
+          </Typography>
+          <Typography
+            variant="p"
+            fontSize="14px"
+            fontWeight="500"
+            color="#9CA3AF"
+          >
+            month
+          </Typography>
+        </Box>
+      </Box>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", marginBottom: "30px" }}
+      >
+        <Button
+          disabled={isSubscriptionActive}
+          variant="contained"
+          onClick={() =>
+            navigate(`/checkout?priceId=${item.id}`, { state: { item } })
+          }
+          sx={{
+            width: "100%",
+          }}
+          className="login-button"
+        >
+          Start trial
+        </Button>
+      </Box>
 
       {item.features.map((feature, key) => (
-        <Box key={key} sx={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
+        <Box
+          key={key}
+          sx={{ display: "flex", alignItems: "center", marginBottom: "20px" }}
+        >
           <CardMedia
             component="img"
             sx={{
@@ -85,27 +114,7 @@ const SubscriptionCard = ({ icon, item }) => {
         </Box>
       ))}
 
-      <Divider sx={{ marginY: "20px" }} />
-
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Button
-          disabled={isSubscriptionActive}
-          variant="contained"
-          onClick={() => navigate(`/checkout?priceId=${item.id}`, { state: { item } })}
-          sx={{
-            width: "100%",
-            fontSize: "16px",
-            background: "#d22418",
-            borderRadius: "10px",
-            "&:hover": {
-              background: "white",
-              color: "#888",
-            },
-          }}
-        >
-          Start trial
-        </Button>
-      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center" }}></Box>
     </Box>
   );
 };

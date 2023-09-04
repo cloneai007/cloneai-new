@@ -4,7 +4,7 @@ import Fade from "react-reveal/Fade";
 
 import CheckIcon from "../../../images/pricing/check-icon.png";
 
-const PricingCard = ({ icon, name, price }) => {
+const PricingCard = ({ description, name, price }) => {
   const navigate = useNavigate();
 
   return (
@@ -14,21 +14,14 @@ const PricingCard = ({ icon, name, price }) => {
           backgroundColor: "#1F2A37",
           borderRadius: "10px",
           padding: "30px",
-          marginBottom: { xs: "20px", md: 0 },
+          marginBottom: { xs: "20px", md: "20px" },
+          transition: "transform 250ms linear",
+          "&:hover": {
+            transform: "scale(1.1)",
+            backgroundColor: "#1F2A37",
+          },
         }}
       >
-        <CardMedia
-          component="img"
-          sx={{
-            objectFit: "contain",
-            width: "40px",
-            height: "40px",
-            marginBottom: "18px",
-          }}
-          image={icon}
-          alt="Category Image"
-        />
-
         <Typography
           variant="h6"
           fontSize="24px"
@@ -40,25 +33,64 @@ const PricingCard = ({ icon, name, price }) => {
         </Typography>
 
         <Typography
-          variant="h4"
-          fontSize="40px"
-          lineHeight="40px"
-          fontWeight="700"
-          color="#FFFFFF"
-        >
-          {price}
-        </Typography>
-
-        <Typography
-          variant="p"
-          fontSize="14px"
+          variant="h1"
+          fontSize="16px"
           fontWeight="500"
-          color="#9CA3AF"
+          color="#FFFFFF"
+          marginBottom="30px"
         >
-          /month
+          {description}
         </Typography>
 
-        <Divider sx={{ marginY: "20px" }} />
+        <Box sx={{ display: "flex", marginBottom: "20px" }}>
+          <Typography
+            variant="h4"
+            fontSize="40px"
+            lineHeight="40px"
+            fontWeight="700"
+            color="#FFFFFF"
+            marginRight="5px"
+          >
+            {price}
+          </Typography>
+
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Typography
+              variant="p"
+              fontSize="14px"
+              fontWeight="500"
+              color="#9CA3AF"
+            >
+              per
+            </Typography>
+            <Typography
+              variant="p"
+              fontSize="14px"
+              fontWeight="500"
+              color="#9CA3AF"
+            >
+              month
+            </Typography>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "30px",
+          }}
+        >
+          <Button
+            sx={{
+              width: "100%",
+            }}
+            variant="contained"
+            onClick={() => navigate("/login")}
+            className="login-button"
+          >
+            Talk to our team
+          </Button>
+        </Box>
 
         <Box
           sx={{ display: "flex", alignItems: "center", marginBottom: "20px" }}
@@ -130,18 +162,6 @@ const PricingCard = ({ icon, name, price }) => {
           >
             Hands free software
           </Typography>
-        </Box>
-
-        <Divider sx={{ marginY: "20px" }} />
-
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            className="login-button"
-            variant="contained"
-            onClick={() => navigate("/login")}
-          >
-            Talk to our team
-          </Button>
         </Box>
       </Box>
     </Fade>

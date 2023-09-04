@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 
 import SubscriptionTitle from "./SubscriptionTitle";
 import SubscriptionPlan from "./SubscriptionPlan";
+import PricingSection from "../home/components/PricingSection"
 
 const Subscription = () => {
   return (
@@ -9,6 +10,9 @@ const Subscription = () => {
       <SubscriptionTitle />
 
       <SubscriptionPlan />
+     
+      <PricingSection />
+  
     </Box>
   );
 };

@@ -56,7 +56,11 @@ const ForgotPassword = React.memo(() => {
       }
 
       setCooldown(20);
-      const data = await Auth.forgotPassword(email);
+      const data = await Auth.forgotPassword(email, {
+        emailSubject: "Password Reset For CloneAI",
+        emailMessage: "Your password reset code is {####}",
+        emailFrom: "Support@cloneai.io",
+      });
       startCountDown();
       console.log(data);
       return data;
@@ -69,6 +73,7 @@ const ForgotPassword = React.memo(() => {
 
   const onSubmit = async (e) => {
     try {
+      console.log(e);
       e.preventDefault();
       setLoading(true);
       const data = await sendVerificationEmail();

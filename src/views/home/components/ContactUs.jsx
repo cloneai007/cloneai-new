@@ -11,8 +11,8 @@ import MessageIcon from "../../../images/message-icon.png";
 import PhoneIcon from "../../../images/phone-icon.png";
 import { toast } from "react-hot-toast";
 import { useStore } from "../../../context/AppProvider";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const CustomTextField = styled(TextField)({
   width: "100%",
@@ -67,21 +67,28 @@ const CustomTextField = styled(TextField)({
 const ContactUs = () => {
   const [loading, setLoading] = useState(false);
   const { sendContactUsEmail } = useStore();
+  const [isChecked, setIsChecked] = useState(false);
 
-  const sendEmail = async (body) => {
+  const handleChecked = (e) => {
+    console.log(e);
+    setIsChecked(e.target.checked);
+  };
+  console.log(isChecked);
+
+  const sendEmail = async (body, isChecked) => {
     try {
+      body.isChecked = isChecked;
+      body.message = " ";
+      console.log(body);
       setLoading(true);
       const response = await sendContactUsEmail(body);
       console.log(response);
-      toast.success(
-        response.message || "Your message has been sent successfully!",
-        {
-          style: {
-            fontSize: "18px", // You can adjust the font size as needed
-            textAlign: "center",
-          },
-        }
-      );
+      toast.success(response.message || "You have subscribed successfully!!", {
+        style: {
+          fontSize: "18px", // You can adjust the font size as needed
+          textAlign: "center",
+        },
+      });
     } catch (e) {
       toast.error(e?.message || "Please fill in the form!");
     } finally {
@@ -164,11 +171,7 @@ const ContactUs = () => {
                 image={MessageIcon}
                 alt="Icon"
               />
-              <a
-                href="mailto:Support@cloneai.io"
-                style={{ color: "white" }}
-                // onClick={openGmail}
-              >
+              <a href="mailto:Support@cloneai.io" style={{ color: "white" }}>
                 <Typography
                   variant="h6"
                   fontSize="20px"
@@ -208,10 +211,9 @@ const ContactUs = () => {
                   firstName: "",
                   lastName: "",
                   email: "",
-                  message: "",
                 }}
                 onSubmit={(values) => {
-                  sendEmail(values);
+                  sendEmail(values, isChecked);
                 }}
               >
                 {({ errors, handleChange, touched }) => (
@@ -257,7 +259,7 @@ const ContactUs = () => {
                       </Grid>
 
                       <Grid item xs={12}>
-                        <CustomTextField
+                        {/* <CustomTextField
                           autoComplete="off"
                           id="message"
                           variant="outlined"
@@ -269,17 +271,24 @@ const ContactUs = () => {
                           type="text"
                           error={errors.message && touched.message}
                           onChange={handleChange}
-                        />
-                        {/* <FormControlLabel
-                          required
-                          control={<Checkbox sx={{
-                            color: 'white',
-                            '&.Mui-checked':{
-                              color: 'red'
-                            }
-                          }}/>}
-                          label="Terms & Conditions"
                         /> */}
+                        <FormControlLabel
+                          required
+                          control={
+                            <Checkbox
+                              id="checked"
+                              sx={{
+                                color: "white",
+                                "&.Mui-checked": {
+                                  color: "red",
+                                },
+                              }}
+                              error={errors.checked && touched.checked}
+                              onChange={handleChecked}
+                            />
+                          }
+                          label="Terms & Conditions"
+                        />
                       </Grid>
 
                       <Grid item xs={12}>
@@ -291,9 +300,13 @@ const ContactUs = () => {
                           sx={{
                             width: "100%",
                             marginTop: "10px",
+                            "&:hover": {
+                              backgroundColor: "white",
+                              color: "black",
+                            },
                           }}
                         >
-                          Message us
+                          Subscribe
                         </LoadingButton>
                       </Grid>
                     </Grid>

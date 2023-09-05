@@ -103,7 +103,7 @@ const ContactUs = () => {
         backgroundColor: "#1F2A37",
       }}
     >
-      <Grid container columnSpacing={3} sx={{ paddingY: "100px" }}>
+      <Grid container columnSpacing={3} sx={{ paddingY: "50px" }}>
         <Grid item xs={12} md={5}>
           <Fade bottom>
             <Typography

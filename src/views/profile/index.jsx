@@ -6,6 +6,7 @@ import UserProfile from "./UserProfile";
 import { useStore } from "../../context/AppProvider";
 import { Auth } from "aws-amplify";
 import { toast } from "react-hot-toast";
+import GroupButton from "./GroupButton";
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -18,9 +19,9 @@ const Profile = () => {
       const user = await Auth.currentAuthenticatedUser();
       await Auth.updateUserAttributes(user, payload);
       setUser((prevUser) => ({ ...prevUser, ...payload }));
-      toast.success('Profile updated successfully');
+      toast.success("Profile updated successfully");
     } catch (error) {
-      toast.error(error?.message || 'Something went wrong!');
+      toast.error(error?.message || "Something went wrong!");
     } finally {
       setLoading(false);
       setIsEditing(false);
@@ -28,10 +29,7 @@ const Profile = () => {
   };
 
   const validateFormData = (formData) => {
-    return (
-      formData.name.trim() &&
-      formData.family_name.trim()
-    );
+    return formData.name.trim() && formData.family_name.trim();
   };
 
   const handleSubmit = (event) => {
@@ -44,19 +42,19 @@ const Profile = () => {
     };
 
     if (formData?.phone_number) {
-      formData.phone_number = formData.phone_number.replace(/\s/g, '');
+      formData.phone_number = formData.phone_number.replace(/\s/g, "");
     } else {
       delete formData.phone_number;
     }
 
-    console.log('formData', formData);
+    console.log("formData", formData);
 
     const isValid = validateFormData(formData);
     if (isValid) {
       console.log(formData);
-      updateUserAttribute(formData)
+      updateUserAttribute(formData);
     } else {
-      console.log('Form data is invalid. Please check the inputs.');
+      console.log("Form data is invalid. Please check the inputs.");
     }
   };
 
@@ -76,6 +74,14 @@ const Profile = () => {
           onPressEdit={() => setIsEditing(true)}
           onPressCancel={() => setIsEditing(false)}
         />
+        {/* <Box sx={{ display: { xs: "block", sm: "block" }, paddingTop: "10px" , textAlign:'center'}}>
+          <GroupButton
+            loading={loading}
+            isEditing={isEditing}
+            onPressEdit={() => setIsEditing(true)}
+            onPressCancel={() => setIsEditing(false)}
+          />
+        </Box> */}
       </Box>
     </form>
   );

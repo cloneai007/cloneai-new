@@ -6,10 +6,10 @@ import {
   TextField,
   Typography,
   IconButton,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material";
 import { Auth, Storage } from "aws-amplify";
-import { MuiTelInput } from 'mui-tel-input'
+import { MuiTelInput } from "mui-tel-input";
 import Stack from "@mui/material/Stack";
 
 import { toast } from "react-hot-toast";
@@ -17,7 +17,7 @@ import { useStore } from "../../../context/AppProvider";
 import ProfileImage from "../../../images/dashboard/profile-img.jpg";
 import { useEffect, useState } from "react";
 import GroupButton from "../GroupButton";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import { S3_BUCKET_BASE_URL } from "../../../configuration";
 import { getAvatarUrl } from "../../../utils";
 
@@ -75,7 +75,7 @@ const MuiInputText = styled(MuiTelInput)({
     },
   },
   "& .MuiIconButton-root": {
-    padding: 0
+    padding: 0,
   },
   "& .MuiOutlinedInput-root": {
     "& input": {
@@ -96,7 +96,6 @@ const MuiInputText = styled(MuiTelInput)({
       borderRadius: "8px !important",
       top: 0,
     },
-
   },
   "& .MuiInputBase-root:has(> input:-webkit-autofill)": {
     backgroundColor: "transparent",
@@ -121,22 +120,31 @@ const InfoText = styled(Typography)({
   minHeight: "44.13px",
 });
 
-const UserProfile = ({ user, isEditing, loading, onPressEdit, onPressCancel }) => {
+const UserProfile = ({
+  user,
+  isEditing,
+  loading,
+  onPressEdit,
+  onPressCancel,
+}) => {
   const { setUser } = useStore();
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  console.log('img', user?.picture ? `${S3_BUCKET_BASE_URL}/${user.picture}` : ProfileImage)
+  console.log(
+    "img",
+    user?.picture ? `${S3_BUCKET_BASE_URL}/${user.picture}` : ProfileImage
+  );
 
   useEffect(() => {
     if (user?.phone_number) {
-      setValue(user?.phone_number)
+      setValue(user?.phone_number);
     }
-  }, [user?.phone_number])
+  }, [user?.phone_number]);
 
   const handleChange = (newValue) => {
     setValue(newValue);
-  }
+  };
 
   const uploadProfileImage = async (e) => {
     const file = e.target.files[0];
@@ -146,7 +154,7 @@ const UserProfile = ({ user, isEditing, loading, onPressEdit, onPressCancel }) =
       const result = await Storage.put(file.name, file, {
         contentType: "image/png",
         progressCallback: (progress) => {
-          setUploadProgress((progress.loaded / progress.total * 100) - 10);
+          setUploadProgress((progress.loaded / progress.total) * 100 - 10);
         },
       });
       const user = await Auth.currentAuthenticatedUser();
@@ -171,20 +179,27 @@ const UserProfile = ({ user, isEditing, loading, onPressEdit, onPressCancel }) =
         borderRadius: "15px",
       }}
     >
-      <Stack sx={{
-        width: { xs: "50%", lg: "15%" },
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "auto"
-      }}>
-
-        <div style={{ position: 'relative', display: 'inline-block', marginBottom: "40px" }}>
-          <div style={{ position: 'relative' }}>
+      <Stack
+        sx={{
+          width: { xs: "50%", lg: "15%" },
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "auto",
+        }}
+      >
+        <div
+          style={{
+            position: "relative",
+            display: "inline-block",
+            marginBottom: "40px",
+          }}
+        >
+          <div style={{ position: "relative" }}>
             <Avatar
               src={getAvatarUrl(user)}
               alt="Avatar"
-              sx={{ width: "134.62px", height: "134.62px", }}
+              sx={{ width: "134.62px", height: "134.62px" }}
             />
             <CircularProgress
               style={{
@@ -203,19 +218,23 @@ const UserProfile = ({ user, isEditing, loading, onPressEdit, onPressCancel }) =
             type="file"
             id="imageInput"
             accept="image/*"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             onChange={uploadProfileImage}
           />
           <label htmlFor="imageInput">
             <IconButton
-              style={{ position: 'absolute', bottom: "5px", right: "5px", background: '#d22417' }}
+              style={{
+                position: "absolute",
+                bottom: "5px",
+                right: "5px",
+                background: "#d22417",
+              }}
               component="span"
             >
-              <EditIcon sx={{ fontSize: '17px' }} />
+              <EditIcon sx={{ fontSize: "17px" }} />
             </IconButton>
           </label>
         </div>
-
       </Stack>
       <Box
         sx={{
@@ -227,8 +246,10 @@ const UserProfile = ({ user, isEditing, loading, onPressEdit, onPressCancel }) =
           marginRight: "30px",
           display: { xs: "none", lg: "block" },
         }}
-      ></Box>
-
+      >
+        
+      </Box>
+      
       <Grid container columnSpacing={3} rowSpacing={3}>
         <Grid item xs={12} sm={6} md={4}>
           <InputLabel>First Name</InputLabel>
@@ -303,13 +324,6 @@ const UserProfile = ({ user, isEditing, loading, onPressEdit, onPressCancel }) =
           )}
         </Grid>
       </Grid>
-      <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-        <GroupButton
-          loading={loading}
-          isEditing={isEditing}
-          onPressEdit={onPressEdit}
-          onPressCancel={onPressCancel} />
-      </Box>
     </Box>
   );
 };

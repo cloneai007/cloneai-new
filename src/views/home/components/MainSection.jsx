@@ -62,7 +62,7 @@ const MainSection = ({ onCalenderOpen }) => {
           variant="contained"
           onClick={onCalenderOpen}
           sx={{
-            padding: "10px",
+            padding: "10px 15px",
             backgroundColor: "#d22418",
             color: "white",
             fontSize: "14px",

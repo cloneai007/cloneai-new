@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { CardMedia } from "@mui/material";
 import { HashLink } from "react-router-hash-link";
+import LoginIcon from "@mui/icons-material/Login";
 
 const pages = [
   { name: "How it works", link: "/#howItWorks" },
@@ -102,6 +103,7 @@ const Header = React.memo(() => {
             sx={{
               display: { xs: "none", md: "flex" },
               "& a": { textDecoration: "none" },
+              marginLeft: "auto",
             }}
           >
             {pages.map((page, key) => (
@@ -114,7 +116,7 @@ const Header = React.memo(() => {
                     fontSize: "16px",
                     color: "#FFFFFF",
                     textTransform: "capitalize",
-                    "&:hover":{color:'red'}
+                    "&:hover": { color: "red" },
                   }}
                 >
                   {page.name}
@@ -128,8 +130,12 @@ const Header = React.memo(() => {
               className="login-button"
               variant="contained"
               onClick={() => navigate("/login")}
+              sx={{
+                marginLeft: "20px",
+              }}
             >
               Login
+              <LoginIcon fontSize="medium" />
             </Button>
           </Box>
         </Container>

@@ -33,7 +33,7 @@ const Header = React.memo(() => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" style={{ top: 0 }}>
       <Toolbar sx={{ backgroundColor: "#050709" }} disableGutters>
         <Container
           maxWidth="xl"
@@ -126,6 +126,17 @@ const Header = React.memo(() => {
           </Box>
 
           <Box>
+            {/* <Button
+              className="login-button"
+              variant="contained"
+              onClick={() => navigate("/createAccount")}
+              sx={{
+                marginLeft: "20px",
+              }}
+            >
+              Login
+              <LoginIcon fontSize="medium" />
+            </Button> */}
             <Button
               className="login-button"
               variant="contained"
@@ -135,7 +146,7 @@ const Header = React.memo(() => {
               }}
             >
               Login
-              <LoginIcon fontSize="medium" />
+              {/* <LoginIcon fontSize="medium" /> */}
             </Button>
           </Box>
         </Container>

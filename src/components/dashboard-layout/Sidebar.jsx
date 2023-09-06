@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Box, CardMedia, Typography } from "@mui/material";
+import { AppBar, Box, CardMedia, Typography } from "@mui/material";
 
 import Logo from "../../images/logowhite.png";
 
@@ -60,13 +60,13 @@ const Sidebar = ({ tabs, sidebarOpen, setSidebarOpen }) => {
       className="dashboard-sidebar"
       sx={{
         height: "100%",
-        width: { xs: !sidebarOpen ? "0px" : "255px", md: "255px" },
+        width: { xs: !sidebarOpen ? "0px" : "255  px", md: "210px" },
         backgroundColor: "#111928",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         padding: { xs: !sidebarOpen ? "20px 0" : "20px", md: "20px" },
-        position: { xs: "absolute", md: "static" },
+        position: "fixed",
         left: 0,
         top: 0,
         zIndex: 10,

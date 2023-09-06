@@ -69,7 +69,11 @@ const DashboardLayout = ({ children }) => {
         setSidebarOpen={setSidebarOpen}
       />
 
-      <Box className="content" width="100%">
+      <Box
+        className="content"
+        width="100%"
+        sx={{ marginLeft: { xs: "0px", md: "210px" } }}
+      >
         <Box
           className="header"
           sx={{

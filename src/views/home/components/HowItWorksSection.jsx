@@ -9,11 +9,7 @@ import One from "../../../images/1.png";
 import Two from "../../../images/2.png";
 import Three from "../../../images/3.png";
 
-
-
-
 const HowItWorksSection = ({ onCalenderOpen }) => {
-
   // const [uu,setuu]=useState(false);
 
   return (
@@ -226,17 +222,6 @@ const HowItWorksSection = ({ onCalenderOpen }) => {
           >
             Talk to our team
           </Button>
-          {/* <Button
-            variant="outlined"
-            sx={{
-              backgroundColor: "red",
-              "&:hover": {
-                backgroundColor: "blue",
-              },
-            }}
-          >
-            Outlined
-          </Button> */}
         </Fade>
       </Grid>
     </Grid>

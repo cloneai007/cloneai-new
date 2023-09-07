@@ -20,7 +20,7 @@ const pages = [
   { name: "Contact Us", link: "/#contact" },
 ];
 
-const Header = React.memo(() => {
+const Header = React.memo(({ handleLogin }) => {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -126,27 +126,27 @@ const Header = React.memo(() => {
           </Box>
 
           <Box>
-            {/* <Button
-              className="login-button"
-              variant="contained"
-              onClick={() => navigate("/createAccount")}
-              sx={{
-                marginLeft: "20px",
-              }}
-            >
-              Login
-              <LoginIcon fontSize="medium" />
-            </Button> */}
             <Button
               className="login-button"
               variant="contained"
-              onClick={() => navigate("/login")}
+              onClick={() => handleLogin("2")}
+              // onClick={handelSignupVal}
+              sx={{
+                marginLeft: "20px",
+              }}
+            >
+              Sign Up
+            </Button>
+            <Button
+              className="login-button"
+              variant="contained"
+              onClick={() => handleLogin("1")}
+              // onClick={handleLoginVal}
               sx={{
                 marginLeft: "20px",
               }}
             >
               Login
-              {/* <LoginIcon fontSize="medium" /> */}
             </Button>
           </Box>
         </Container>

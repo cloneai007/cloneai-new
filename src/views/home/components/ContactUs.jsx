@@ -73,7 +73,6 @@ const ContactUs = () => {
     console.log(e);
     setIsChecked(e.target.checked);
   };
-  console.log(isChecked);
 
   const sendEmail = async (body, isChecked) => {
     try {

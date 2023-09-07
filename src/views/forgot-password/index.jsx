@@ -13,7 +13,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Slide from "react-reveal/Slide";
 import { toast } from "react-hot-toast";
 
-import Header from "../../components/header/index";
 import Footer from "../../components/footer";
 import "../auth/Auth.css";
 
@@ -128,13 +127,12 @@ const ForgotPassword = React.memo(() => {
         height: "100vh",
       }}
     >
-      <Header />
-
       <Box
         sx={{
           paddingY: "20px",
           paddingX: "10px",
           width: "100%",
+          height: "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

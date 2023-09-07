@@ -14,6 +14,7 @@ import Header from "../../components/header/index";
 import Footer from "../../components/footer";
 import Privacy from "../../components/privacy";
 import "./Auth.css";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -23,18 +24,23 @@ const MuiTab = styled(Tab)({
   },
 });
 
-const Login = React.memo(() => {
+const Login = React.memo(({ loginVal, close }) => {
   const [value, setValue] = React.useState("1");
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const openPrivacyDialog = () => {
+    close();
     setOpen(true);
   };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    setValue(loginVal);
+  }, [loginVal]);
 
   useEffect(() => {
     checkUser();
@@ -56,24 +62,41 @@ const Login = React.memo(() => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
+          position: "fixed",
+          top: "0px",
+          left: "0px",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          zIndex: "9999",
         }}
       >
-        <Header />
         <Box
           sx={{
             paddingY: "20px",
             paddingX: "10px",
             width: "100%",
+            position: "relative",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // backgroundColor: "rgba(0, 0, 0, 0.5)",
           }}
         >
-          <Card className="auth-card">
+          <Card className="auth-card" sx={{ position: "relative" }}>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "12px",
+                right: "15px",
+                cursor: "pointer",
+              }}
+              onClick={() => close()}
+            >
+              <CancelIcon fontSize="large" />
+            </Box>
             <CardContent className="auth-card-content">
               <CardMedia
                 className="logo-banner"
@@ -83,21 +106,6 @@ const Login = React.memo(() => {
               />
 
               <TabContext value={value}>
-                <TabList
-                  TabIndicatorProps={{
-                    className: "auth-tab-indicator",
-                  }}
-                  className="auth-tab-list"
-                  onChange={handleChange}
-                  aria-label="auth-tabs"
-                >
-                  <MuiTab className="auth-tab" label="Sign in" value="1" />
-                  <MuiTab
-                    className="auth-tab"
-                    label="Create Account"
-                    value="2"
-                  />
-                </TabList>
                 <TabPanel
                   value="1"
                   sx={{ width: "100%", padding: "20px 0", maxWidth: "400px" }}
@@ -114,7 +122,6 @@ const Login = React.memo(() => {
             </CardContent>
           </Card>
         </Box>
-        <Footer />
       </Box>
     </>
   );

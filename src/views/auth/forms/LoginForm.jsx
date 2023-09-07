@@ -50,16 +50,17 @@ const LoginForm = React.memo(({ openPrivacyDialog }) => {
       setLoading(true);
       const { email, password } = formValues;
       const user = await Auth.signIn(email, password);
-      console.log("user signIn", user);
       await fetchCustomer();
       await getPlans();
       navigate("/dashboard");
     } catch (e) {
-      if (e?.code === 'UserNotConfirmedException') {
-        console.log('UserNotConfirmedException')
-        navigate('/verification', { state: { username: formValues.email, code: e.code } });
+      if (e?.code === "UserNotConfirmedException") {
+        console.log("UserNotConfirmedException");
+        navigate("/verification", {
+          state: { username: formValues.email, code: e.code },
+        });
       }
-      toast.error(e.message || 'Something went wrong!')
+      toast.error(e.message || "Something went wrong!");
     } finally {
       setLoading(false);
     }
@@ -113,7 +114,11 @@ const LoginForm = React.memo(({ openPrivacyDialog }) => {
         </Button>
         <Typography className="agreement" variant="body1">
           By Signing in, Your Agree on Both the{" "}
-          <Link className="terms-link" href="#" onClick={openPrivacyDialog}>
+          <Link
+            className="terms-link"
+            href="#"
+            onClick={() => openPrivacyDialog(false)}
+          >
             Term and Conditions, Privacy Policy
           </Link>{" "}
           of Clone AI

@@ -9,7 +9,6 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import "./AuthForm.css";
 import { useNavigate } from "react-router-dom";
 
-
 const SignUpForm = React.memo(({ openPrivacyDialog }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -32,7 +31,7 @@ const SignUpForm = React.memo(({ openPrivacyDialog }) => {
           email,
           name: firstName,
           family_name: lastName,
-        }
+        },
       });
       // const user = await Auth.signIn(email, password);
       console.log("user createAccount", user);

@@ -1,0 +1,82 @@
+.image__uploader {
+    opacity: 0;
+    width: 0;
+    position: absolute;
+}
+
+.ImageCropper__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImageCropper__container-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ImageCropper__container-options-button {
+    position: relative;
+    cursor: pointer;
+    border: none;
+}
+
+.Cropper {
+    max-width: 450px !important;
+    height: 350px !important;
+}
+
+.ImageCropper__preview {
+    margin-bottom: 100px;
+    margin-right: 20px;
+}
+
+.ImageCropper__preview-img {
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+}
+
+.ImageCropper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media screen and (max-width:1024px) and (min-width:500px) {
+    .ImageCropper {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .ImageCropper__preview {
+        margin-bottom: 30px;
+        margin-right: 0px;
+    }
+
+    .ImageCropper__preview-img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width:500px) and (min-width:200px) {
+    .ImageCropper {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .ImageCropper__preview {
+        margin-bottom: 15px;
+        margin-right: 0px;
+    }
+
+    .Cropper {
+        height: 250px !important;
+    }
+
+    .ImageCropper__preview-img {
+        width: 130px;
+        height: 130px;
+    }
+}

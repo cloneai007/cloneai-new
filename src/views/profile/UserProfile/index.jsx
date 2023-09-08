@@ -20,6 +20,8 @@ import GroupButton from "../GroupButton";
 import EditIcon from "@mui/icons-material/Edit";
 import { S3_BUCKET_BASE_URL } from "../../../configuration";
 import { getAvatarUrl } from "../../../utils";
+import ImageCropper from "../ImageCropper";
+import ProfilePopup from "./ProfilePopup";
 
 const InputText = styled(TextField)({
   width: "100%",
@@ -129,7 +131,9 @@ const UserProfile = ({
 }) => {
   const { setUser } = useStore();
   const [value, setValue] = useState("");
+  const [image,setImage]= useState(false)
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [profilePopup,setProfilePopup]=useState(false)
 
   console.log(
     "img",
@@ -146,9 +150,9 @@ const UserProfile = ({
     setValue(newValue);
   };
 
-  const uploadProfileImage = async (e) => {
-    const file = e.target.files[0];
 
+  const uploadProfileImage = async (e) => {
+ const file=e
     try {
       setUploadProgress(0);
       const result = await Storage.put(file.name, file, {
@@ -167,10 +171,15 @@ const UserProfile = ({
     }
   };
 
+  const closePopup=()=>{
+    setProfilePopup(false)
+  }
+
   return (
     <Box
       sx={{
         backgroundColor: "#111928",
+        position: "relative",
         padding: "25px",
         marginTop: "30px",
         display: "flex",
@@ -179,6 +188,30 @@ const UserProfile = ({
         borderRadius: "15px",
       }}
     >
+      {profilePopup ? (
+        <Box
+          sx={{
+            display: "flex",
+            position: "fixed",
+            top: "0px",
+            left: "0px",
+            width: "100%",
+            height: "100%",
+            zIndex: "99",
+            overflow: "scroll",
+            backgroundColor:
+              "rgba(0, 0, 0, 0.5)" /* Transparent background color */,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ProfilePopup
+            user={user}
+            setProfilePopup={closePopup}
+            uploadProfileImage={uploadProfileImage}
+          />
+        </Box>
+      ) : null}
       <Stack
         sx={{
           width: { xs: "50%", lg: "15%" },
@@ -214,13 +247,7 @@ const UserProfile = ({
               thickness={1}
             />
           </div>
-          <input
-            type="file"
-            id="imageInput"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={uploadProfileImage}
-          />
+
           <label htmlFor="imageInput">
             <IconButton
               style={{
@@ -230,12 +257,14 @@ const UserProfile = ({
                 background: "#d22417",
               }}
               component="span"
+              onClick={() => setProfilePopup(true)}
             >
               <EditIcon sx={{ fontSize: "17px" }} />
             </IconButton>
           </label>
         </div>
       </Stack>
+
       <Box
         sx={{
           width: "1px",
@@ -246,10 +275,8 @@ const UserProfile = ({
           marginRight: "30px",
           display: { xs: "none", lg: "block" },
         }}
-      >
-        
-      </Box>
-      
+      ></Box>
+
       <Grid container columnSpacing={3} rowSpacing={3}>
         <Grid item xs={12} sm={6} md={4}>
           <InputLabel>First Name</InputLabel>

@@ -8,6 +8,9 @@ import PhoneThree from "../../../images/phoneStocks_edited.png";
 import One from "../../../images/1.png";
 import Two from "../../../images/2.png";
 import Three from "../../../images/3.png";
+import PhoneOneNew from "../../../images/phoneOneNew.png";
+import phoneTowNew from "../../../images/phoneTwoNew.png";
+import phoneThreeNew from "../../../images/phoneThreeNew.png";
 
 const HowItWorksSection = ({ onCalenderOpen }) => {
   // const [uu,setuu]=useState(false);
@@ -72,7 +75,7 @@ const HowItWorksSection = ({ onCalenderOpen }) => {
                 maxWidth: "246px",
                 height: "auto",
               }}
-              image={PhoneOne}
+              image={PhoneOneNew}
               alt="Image"
             />
           </Box>
@@ -123,7 +126,7 @@ const HowItWorksSection = ({ onCalenderOpen }) => {
                 maxWidth: "246px",
                 height: "auto",
               }}
-              image={PhoneTwo}
+              image={phoneTowNew}
               alt="Image"
             />
           </Box>
@@ -174,7 +177,7 @@ const HowItWorksSection = ({ onCalenderOpen }) => {
                 maxWidth: "246px",
                 height: "auto",
               }}
-              image={PhoneThree}
+              image={phoneThreeNew}
               alt="Image"
             />
           </Box>

@@ -12,6 +12,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Slide from "react-reveal/Slide";
 import { toast } from "react-hot-toast";
+import CancelIcon from "@mui/icons-material/Cancel";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 import Footer from "../../components/footer";
 import "../auth/Auth.css";
@@ -117,28 +119,59 @@ const ForgotPassword = React.memo(() => {
 
   console.log("cooldown > 0", cooldown > 0);
 
+  const goBack = () => {
+    navigate(-1); // This will navigate back to the previous page
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
+        position: "fixed",
+        top: "0px",
+        left: "0px",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        zIndex: "9999",
       }}
+      // onClick={() => navigate("/")}
     >
       <Box
         sx={{
           paddingY: "20px",
           paddingX: "10px",
           width: "100%",
-          height: "100vh",
+          position: "relative",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <Card className="auth-card">
+        <Card className="auth-card" sx={{ position: "relative" }}>
+          <CancelIcon
+            fontSize="large"
+            sx={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/")}
+          />
+          {/* <KeyboardBackspaceIcon
+            fontSize="large"
+            sx={{
+              position: "absolute",
+              top: "10px",
+              left: "10px",
+              cursor: "pointer",
+            }}
+            onClick={goBack}
+          /> */}
+
           <CardContent className="auth-card-content">
             <CardMedia
               className="logo-banner"
@@ -239,7 +272,7 @@ const ForgotPassword = React.memo(() => {
         </Card>
       </Box>
 
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 });

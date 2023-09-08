@@ -6,13 +6,19 @@ const TabOneContent = () => {
   return (
     <Box paddingTop="20px">
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
       >
         1. Log in to your account at{" "}
-        <Link color="#F30000">www.interactivebokers.com</Link>
+        <Link
+          href="https://www.interactivebrokers.co.in/sso/Login?RL=1"
+          target="_blank"
+          color="#F30000"
+        >
+          www.interactivebokers.com
+        </Link>
       </Typography>
 
       <CardMedia
@@ -27,9 +33,9 @@ const TabOneContent = () => {
       />
 
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
         marginTop="30px"
       >
@@ -49,9 +55,9 @@ const TabOneContent = () => {
       />
 
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
         marginTop="30px"
       >
@@ -59,9 +65,9 @@ const TabOneContent = () => {
       </Typography>
 
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
       >
         4. Return to Clone AI and paste the number in the field bellow.

@@ -117,7 +117,8 @@ const LoginForm = React.memo(({ openPrivacyDialog }) => {
           <Link
             className="terms-link"
             href="#"
-            onClick={() => openPrivacyDialog(false)}
+            // onClick={() => openPrivacyDialog(true)}
+            onClick={() => navigate("/privacy")}
           >
             Term and Conditions, Privacy Policy
           </Link>{" "}

@@ -9,9 +9,9 @@ const TabTwoContent = () => {
   return (
     <Box paddingTop="20px">
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
       >
         1. Go to Interactive Brokers and select 'Settings' in the top right
@@ -29,9 +29,9 @@ const TabTwoContent = () => {
       />
 
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
         marginTop="30px"
       >
@@ -50,9 +50,9 @@ const TabTwoContent = () => {
       />
 
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
         marginTop="30px"
       >
@@ -70,9 +70,9 @@ const TabTwoContent = () => {
       />
 
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
         marginTop="30px"
       >
@@ -91,9 +91,9 @@ const TabTwoContent = () => {
       />
 
       <Typography
-        fontSize="14px"
+        fontSize="18px"
         fontWeight="500"
-        lineHeight="15.4px"
+        lineHeight="18px"
         marginBottom="15px"
         marginTop="30px"
       >

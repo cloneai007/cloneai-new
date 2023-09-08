@@ -56,14 +56,6 @@ const CustomTextField = styled(TextField)({
   },
 });
 
-// const openGmail = () => {
-//   // Replace 'youremail@gmail.com' with the recipient's email address
-//   const recipientEmail = "Support@cloneai.io";
-//   const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}`;
-
-//   window.open(gmailUrl, "_blank");
-// };
-
 const ContactUs = () => {
   const [loading, setLoading] = useState(false);
   const { sendContactUsEmail } = useStore();

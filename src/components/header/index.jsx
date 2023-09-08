@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { CardMedia } from "@mui/material";
 import { HashLink } from "react-router-hash-link";
 import LoginIcon from "@mui/icons-material/Login";
+import { Height } from "@mui/icons-material";
 
 const pages = [
   { name: "How it works", link: "/#howItWorks" },
@@ -125,7 +126,11 @@ const Header = React.memo(({ handleLogin }) => {
             ))}
           </Box>
 
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+            }}
+          >
             <Button
               className="login-button"
               variant="contained"
@@ -133,6 +138,13 @@ const Header = React.memo(({ handleLogin }) => {
               // onClick={handelSignupVal}
               sx={{
                 marginLeft: "20px",
+
+                xs: {
+                  lineHeight: 0.75,
+                  textTransform: "uppercase",
+                  minWidth: "67px",
+                  padding: "9px 0px",
+                },
               }}
             >
               Sign Up

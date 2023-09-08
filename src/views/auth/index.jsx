@@ -30,7 +30,7 @@ const Login = React.memo(({ loginVal, close }) => {
   const navigate = useNavigate();
 
   const openPrivacyDialog = () => {
-    close();
+    // close();
     setOpen(true);
   };
 

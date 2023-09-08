@@ -119,7 +119,12 @@ const SignUpForm = React.memo(({ openPrivacyDialog }) => {
         </Button>
         <Typography className="agreement" variant="body1">
           By Signing in, Your Agree on Both the{" "}
-          <Link className="terms-link" href="#" onClick={openPrivacyDialog}>
+          <Link
+            className="terms-link"
+            href="#"
+            // onClick={openPrivacyDialog}
+            onClick={() => navigate("/privacy")}
+          >
             Term and Conditions, Privacy Policy
           </Link>{" "}
           of Clone AI

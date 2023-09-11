@@ -21,7 +21,7 @@ const TabTwoContent = () => {
         component="img"
         sx={{
           width: "100%",
-          maxWidth: "643.24px",
+          maxWidth: "843.24px",
           borderRadius: "5px",
         }}
         image={SelectSettingsImage}
@@ -42,7 +42,7 @@ const TabTwoContent = () => {
         component="img"
         sx={{
           width: "100%",
-          maxWidth: "321.68px",
+          maxWidth: "621.68px",
           borderRadius: "5px",
         }}
         image={ChooseAccountImage}
@@ -62,7 +62,7 @@ const TabTwoContent = () => {
         component="img"
         sx={{
           width: "100%",
-          maxWidth: "684.69px",
+          maxWidth: "884.69px",
           borderRadius: "5px",
         }}
         image={LinkAccountImage}
@@ -83,7 +83,7 @@ const TabTwoContent = () => {
         component="img"
         sx={{
           width: "100%",
-          maxWidth: "684.69px",
+          maxWidth: "884.69px",
           borderRadius: "5px",
         }}
         image={PasteIdImage}
@@ -103,7 +103,7 @@ const TabTwoContent = () => {
         component="img"
         sx={{
           width: "100%",
-          maxWidth: "581.29px",
+          maxWidth: "781.29px",
           borderRadius: "5px",
         }}
         image={ContinueImage}

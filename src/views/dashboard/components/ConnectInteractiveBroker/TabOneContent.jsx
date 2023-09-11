@@ -25,7 +25,7 @@ const TabOneContent = () => {
         component="img"
         sx={{
           width: "100%",
-          maxWidth: "652px",
+          maxWidth: "852px",
           borderRadius: "5px",
         }}
         image={LoginImage}
@@ -47,7 +47,7 @@ const TabOneContent = () => {
         component="img"
         sx={{
           width: "100%",
-          maxWidth: "652px",
+          maxWidth: "852px",
           borderRadius: "5px",
         }}
         image={LocateImage}
